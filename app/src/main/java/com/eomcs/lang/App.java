@@ -73,7 +73,7 @@ public class App {
 			}
 			while(true) {
 				songsNum[playlistSize] = Integer.parseInt(keyboardScanner.nextLine());
-				System.out.printf("%d번 %s\n 노래가 추가 되었습니다.",songsNum[playlistSize],songs[songsNum[playlistSize]]);
+				System.out.printf("%d번 %s\n 노래가 추가 되었습니다.",songsNum[playlistSize],songs[songsNum[playlistSize]-1]);
 				System.out.println("계속(y/N)");
 				
 				playlistSize++;
