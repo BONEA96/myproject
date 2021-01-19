@@ -18,12 +18,23 @@ public class App {
 	static int number = 0;
 	
 	//add Playlist, list Playlist
+	static int playlistSize = 0;
+	static final int PLENGTH = 100;
 	static String [] songs = {
 			"Future - Life is Good(Feat. Dreak)" ,"Roddy Ricch - The Box","AJR - BANG!","Samm Henshaw - All Good","So!YoON! X Phum Viphurit - Wings",
 			"Yerin Beak - Hate you", "Lil Nas X - Old Town Road(Feat. Billy Ray Cyrus)", "24kGoldn - Mood(Feat.Iann dior)", "Dua Lipa - Hallucinate"};
-	static int playlistSize = 0;
-	static final int PLENGTH = 100;
 	static int [] songsNum = new int[PLENGTH];
+	
+	//add Tag, list Tag
+	static final int TLENGTH = 100;
+	static final int tagSize = 0;
+	static int [] genreTag = new int[TLENGTH];
+	static String [] feelingTag = new String[TLENGTH];
+	static String [] moodTag = new String[TLENGTH];
+	static String [] placeTag = new String[TLENGTH];
+	static String [] timeTag = new String[TLENGTH];
+	static String [] tempoTag = new String[TLENGTH];
+	static String [] userGenre = new String[TLENGTH];
 	
 	
 
@@ -67,17 +78,18 @@ public class App {
 		String response = keyboardScanner.nextLine();
 		if(response.equalsIgnoreCase("y")) {
 			for(int i=0; i<songs.length; i++) {
-				System.out.printf("번호 : %d 노래 제목 : %s\n",i+1,songs[i]);
-				System.out.println("추가할 노래의 번호를 입력해주세요.");
-				System.out.print("노래 번호 : ");
+				System.out.printf("%d. %s\n",i+1,songs[i]);
 			}
 			while(true) {
+                System.out.print("노래 번호 : ");
 				songsNum[playlistSize] = Integer.parseInt(keyboardScanner.nextLine());
 				System.out.printf("%d번 %s\n 노래가 추가 되었습니다.",songsNum[playlistSize],songs[songsNum[playlistSize]-1]);
 				System.out.println("계속(y/N)");
 				
 				playlistSize++;
-				if(response.equalsIgnoreCase("n")) {
+				
+				String response2 = keyboardScanner.nextLine();
+				if(response2.equalsIgnoreCase("n")) {
 					break;
 				}
 			}
@@ -89,9 +101,50 @@ public class App {
 	static void listPlaylist() {
 		System.out.println("플레이리스트 목록 : ");
 		for(int i =0; i<playlistSize; i++) {
+		  System.out.println(songs[i]);
 			
 		}
-		
+	}
+	
+	static void addTag() {
+	  System.out.println("플레이리스트에 태그를 추가해 친구들과 공유하고");
+	  System.out.println("당신에게 추천하는 플레이리스트를 만나보세요.");
+	  System.out.println();
+	  System.out.print("장르 태그 : ");
+	  System.out.println("1.#발라드");
+	  System.out.println("2.#POP");
+	  System.out.println("3.#가요");
+	  System.out.println("4.#EDM");
+	  System.out.println("5.#힙합");
+	  System.out.println("6.#트로트");
+	  System.out.println("7.#JAZZ");
+	  System.out.println("8.#CLASSIC");
+	  System.out.println("9.#ROCK");
+	  System.out.println("10.직접입력");
+	  System.out.print(">");
+	  
+	  genreTag[tagSize] = Integer.valueOf(keyboardScanner.nextLine());
+	  
+	  if(genreTag[tagSize]==10) {
+	    System.out.print("#");
+	    userGenre[tagSize]=keyboardScanner.nextLine();
+	  }
+	  System.out.println("기분 태그 : ");
+	  System.out.print("#");
+	  feelingTag[tagSize] = keyboardScanner.nextLine();
+	  
+	  System.out.println("분위기 태그 : ");
+	  System.out.print("#");
+	  moodTag[tagSize] = keyboardScanner.nextLine();
+	  
+	  System.out.println("장소 태그 : ");
+	  
+	  
+	  tagSize++;
+	}
+	
+	static void listTag() {
+	  
 	}
 	
 	public static void main (String [] arg) {
@@ -100,6 +153,7 @@ public class App {
 		        System.out.println("명령어 : "+" /Music/add "+" /Music/list "+" /Playlist/add "+" /Playlist/list ");
 		        System.out.print("명령> ");
 		        String command = keyboardScanner.nextLine();
+		        System.out.println();
 
 		        switch (command) {
 		          case "/Music/add":
@@ -114,6 +168,12 @@ public class App {
 		          case "/Playlist/list":
 		        	  listPlaylist();
 		        	  break;
+		          case "/Tag/add":
+		            addTag();
+		            break;
+		          case "/Tag/list":
+		            listTag();
+		            break;
 		          case "quit":
 		          case "exit":
 		            System.out.println("서비스를 종료합니다.");
