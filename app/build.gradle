@@ -20,7 +20,7 @@ tasks.withType(JavaCompile) {
 
 eclipse{
     project{
-        name = "bonaproject"
+        name = "myproject"
     }
 }
 

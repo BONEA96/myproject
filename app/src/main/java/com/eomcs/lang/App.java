@@ -97,6 +97,7 @@ public class App {
 	public static void main (String [] arg) {
 		loop:
 		      while (true) {
+		        System.out.println("명령어 : "+" /Music/add "+" /Music/list "+" /Playlist/add "+" /Playlist/list ");
 		        System.out.print("명령> ");
 		        String command = keyboardScanner.nextLine();
 
