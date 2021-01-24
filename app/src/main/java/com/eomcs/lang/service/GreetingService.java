@@ -1,4 +1,5 @@
-package com.eomcs.lang;
+package com.eomcs.lang.service;
+import com.eomcs.util.Prompt;
 
 public class GreetingService {
   static String name = null;
