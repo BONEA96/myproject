@@ -12,6 +12,7 @@ public class MusicService {
   static final int LENGTH = 100;
   static int size = 0;
   static Music [] music = new Music[LENGTH];
+  static String[] musicResult = new String[LENGTH];
   
   public void search() {
     System.out.println("찾는 노래에 대한 검색어를 입력하세요.");
@@ -28,8 +29,13 @@ public class MusicService {
     
     String respons = Prompt.inputString("찾은 노래를 내 보관함에 담을까요?(Y/n)");
     if(respons.equalsIgnoreCase("y")) {
-    	add();
-    	music[size++] = m;
+//    	String[] result = new String[LENGTH];
+//		result = add(m.musicTitle, m.artistName);
+//		
+//		System.out.println(result);
+    	musicResult[size] = new StringBuffer().append(m.musicTitle).append(" - ").append(m.artistName).toString();
+    	System.out.printf("%s를 내 보관함에 담았습니다.\n",musicResult[size]);
+		
     }
   }
 
@@ -37,17 +43,22 @@ public class MusicService {
     System.out.println("최근 검색 목록 : ");
     for(int i =0; i<this.size; i++) {
     	Music m = music[i];
-      System.out.printf("검색 번호 : %d 검색일 : %s\n",i+1,m.nowDate);
-      System.out.printf("노래 제목 : %s 아티스트 이름 : %s 앨범 이름 : %s  장르 : %s  발매일 : %s\n",m.musicTitle, m.artistName, m.albumName, m.genre, m.releaseDate);
-
+      System.out.printf("%d. %s - %s \n",i+1,m.musicTitle, m.artistName);
+      System.out.printf("검색일 : %s\n",m.nowDate);
+      System.out.printf("앨범 이름 : %s  장르 : %s  발매일 : %s\n", m.albumName, m.genre, m.releaseDate);
+      //System.out.print(musicResult);
     }
   }
   
-  public static void add() {
-	  Music m = music[size];
-	  m.addMusic = (m.musicTitle + m.artistName);
-	  
-	  
-  }
+//   static String[] add(String musicTitle, String artistName) {
+//	  
+//	  String[] addMusic = new String [LENGTH];
+//	  for (int i=0; i<LENGTH; i++){
+//		 // Music m = music[size];
+//		  addMusic[i] += (musicTitle+"-"+artistName);
+//		 // addMusic[i] += artistName;
+//	  }
+//	 return addMusic;
+//  }
 
 }

@@ -10,6 +10,7 @@ public class Music {
 	public String genre;
 	public Date releaseDate;
 	public Date nowDate;
-	public String addMusic;
+	public String musicResult;
+	//public static String result;
 
 }

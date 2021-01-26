@@ -19,6 +19,11 @@ public class App {
 	MusicService MusicList2 = new MusicService();
 	MusicService MusicList3 = new MusicService();
 	
+	MusicService musicList = new MusicService();
+	PlaylistService PlaylistUp = new PlaylistService();
+	
+	PlaylistService.musicList = musicList;
+	
 	  
 	  
 	  
@@ -27,7 +32,7 @@ public class App {
       while (true) {
         //GreetingService.Name();
         //GreetingService.Hello();
-        System.out.println("명령어 : "+" /Music/search "+" /Music/list "+" /Music/add "+" /Playlist/add "+" /Playlist/list "+"/Tag/add "+"/Tag/list ");
+        System.out.println("명령어 : "+" /Music/search "+" /Music/list "+" /Playlist/add "+" /Playlist/list "+"/Tag/add "+"/Tag/list ");
         String command = Prompt.inputString("명령> ");
         System.out.println();
 
@@ -38,27 +43,18 @@ public class App {
           case "/Music/list":
         	  MusicList1.list();
             break;
-          case "/Music/add":
-        	  MusicList1.add();
-              break;
           case "/Music2/search":
         	  MusicList2.search();
               break;
             case "/Music2/list":
             	MusicList2.list();
               break;
-            case "/Music2/add":
-            	MusicList2.add();
-                break;
             case "/Music3/search":
             	MusicList3.search();
                 break;
               case "/Music3/list":
             	  MusicList3.list();
                 break;
-              case "/Music3/add":
-            	  MusicList3.add();
-                  break;
           case "/Playlist/add":
         	  playList1.add();
             break;

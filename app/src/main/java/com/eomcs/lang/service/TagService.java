@@ -9,7 +9,7 @@ public class TagService {
 		  String placeTag;
 		  String timeTag;
 		  String tempoTag;
-		  int weatherTag;
+		  String weatherTag;
 		  String userGenre;
 	}
 
@@ -52,13 +52,8 @@ public class TagService {
     t.tempoTag = Prompt.inputString("#");
 
     System.out.println("날씨 태그 : ");
-    t.weatherTag = Prompt.inputInt("1. #맑은 \n 2. #쌀쌀한\n 3. #흐린\n"
-        + "4. #따뜻한\n 5. #비오는\n ... 99. 직접입력\n>");
+    t.weatherTag = Prompt.inputString("#");
 
-    if( t.weatherTag==99) {
-    	 t.weatherTag=Prompt.inputInt("#");
-    	 tag[size++] = t;
-    }
 
     tag[size++] = t;
   }
@@ -96,12 +91,11 @@ public class TagService {
     	case 9:
     		tagState = "ROCK";
     		break;
-    	case 999:
+    	default:
     		tagState = t.userGenre;
-    		break;
     		
     	}
-        System.out.printf("%d, %s, %s, %s, %s, %s, %s\n",t.genreTag,tagState,t.feelingTag,t.moodTag,t.placeTag,t.timeTag,t.tempoTag);
+        System.out.printf("%d, %s, %s, %s, %s, %s, %s\n",t.genreTag,tagState,t.feelingTag,t.moodTag,t.placeTag,t.timeTag,t.weatherTag);
     	
     }
 
