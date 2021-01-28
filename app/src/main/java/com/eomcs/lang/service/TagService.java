@@ -3,6 +3,7 @@ import com.eomcs.util.Prompt;
 
 public class TagService {
 	static class Tag {
+		 // int title;
 		  int genreTag;
 		  String feelingTag;
 		  String moodTag ;
@@ -27,6 +28,8 @@ public class TagService {
     System.out.println();
     
     Tag t = new Tag();
+    //System.out.println("태그를 추가할 플레이리스트를 선택해주세요.: ");
+   // t.title = Prompt.inputInt("1.흐린날 듣기 좋은 플레이리스트\n 2.\n>");
     System.out.println("장르 태그 : ");
     t.genreTag = Prompt.inputInt("1. #발라드\n 2. #POP\n 3. #가요\n 4. #EDM\n 5. #힙합\n 6. #트로트\n"
         + "7. #JAZZ\n 8. #CLASSIC\n 9. #ROCK\n ... 99. 직접입력\n>");
@@ -59,7 +62,7 @@ public class TagService {
   }
 
   public static void list() {
-    System.out.printf("%S님의 플레이리스트 : ",GreetingService.name);
+    System.out.println("%S님의 플레이리스트 : ");
     for (int i=0; i<size; i++) {
     	Tag t = tag[i];
     	String tagState = null;
@@ -95,11 +98,14 @@ public class TagService {
     		tagState = t.userGenre;
     		
     	}
-        System.out.printf("%d, %s, %s, %s, %s, %s, %s\n",t.genreTag,tagState,t.feelingTag,t.moodTag,t.placeTag,t.timeTag,t.weatherTag);
+        System.out.printf("#%s #%s #%s #%s #%s #%s\n",tagState,t.feelingTag,t.moodTag,t.placeTag,t.timeTag,t.weatherTag);
     	
     }
 
 
   }
+  
+  
+  
 
 }

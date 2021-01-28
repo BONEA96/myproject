@@ -1,7 +1,8 @@
 package com.eomcs.lang.service;
 import com.eomcs.util.Prompt;
-
 import java.util.Arrays;
+import java.util.List;
+//import java.util.Collections;
 import java.util.stream.Collectors;
 
 import com.eomcs.lang.domain.Music;
@@ -16,14 +17,18 @@ public class PlaylistService {
 	      "Yerin Beak - Hate you", "Lil Nas X - Old Town Road(Feat. Billy Ray Cyrus)", "24kGoldn - Mood(Feat.Iann dior)", "Dua Lipa - Hallucinate"};
 
   public static MusicService musicList;
- 
+  public String[] mergePlaylist = new String [MusicService.musicResult.length+ songs.length];
+
+   
+   
+   
 
   
   public void add() {
 	Playlist p = new Playlist();
 	
 	 
-	  String[] mergePlaylist = new String [MusicService.musicResult.length+ songs.length];
+	  
 	  System.arraycopy(MusicService.musicResult, 0, mergePlaylist, 0, MusicService.musicResult.length);
 	  System.arraycopy(songs, 0, mergePlaylist, MusicService.musicResult.length , songs.length);
 	  
@@ -32,9 +37,12 @@ public class PlaylistService {
     
     if(response.equalsIgnoreCase("y")) {
     	System.out.printf("내 보관함 : %d. %s\n ",size+1, Arrays.stream(mergePlaylist).collect(Collectors.toList()));
-//      for(int i=0; i<songs.length; i++) {
-//        System.out.printf("%d. %s\n",i+1, songs[i]);
-//      }
+    	
+      for(int i=0; i<songs.length; i++) {
+        System.out.printf("%d. %s\n",i+1, songs[i]);
+      }
+      
+      
       while(true) {
         p.songsNum = Prompt.inputInt("노래 번호 : ");
         System.out.printf("%d번 %s\n 노래가 추가 되었습니다.", p.songsNum, songs[p.songsNum-1]);
@@ -51,6 +59,9 @@ public class PlaylistService {
     System.out.println("종료");
     System.out.println();
   }
+  
+
+
 
   public void list() {
     System.out.println("플레이리스트 목록 : ");
